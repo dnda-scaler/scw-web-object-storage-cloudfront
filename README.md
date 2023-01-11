@@ -55,7 +55,7 @@ This script will do the following:
    - Provide these as terraform variables(i.e. infrastructure/terraform.tfvars.json)
    - Build the react application
    - Initialize the terraform provider
-3. Fill  file nfrastructure/terraform.tfvars.json
+3. Fill  file infrastructure/terraform.tfvars.json
    - scw_domain_zone 
    - web_bucket_name
 4. Run make deploy
