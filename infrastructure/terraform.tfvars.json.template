@@ -1,5 +1,6 @@
 {
     "scw_domain_zone":"",
+    "web_bucket_name":"",
     "cloudfront_global_ips":[
 
     ],

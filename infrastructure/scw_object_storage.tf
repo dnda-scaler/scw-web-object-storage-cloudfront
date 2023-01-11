@@ -9,13 +9,16 @@ resource "random_string" "referer_value" {
   special          = false
   override_special = "/@£$"
 }
+variable "web_bucket_name" {
+  type=string
+}
 locals {
   referer_value        = resource.random_string.referer_value.result
   //web_content_location = "../my-web-app/build"
   web_content_location = "../files/web-app-static-content"
 }
 resource "scaleway_object_bucket" "web_app_bucket" {
-  name = "web-app-bucket-cloudfront"
+  name = var.web_bucket_name
   tags = {
     purpose = "static-website-cdn-integration"
   }
@@ -53,7 +56,7 @@ resource "scaleway_object_bucket_policy" "web_app_bucket_policy" {
               "aws:Referer" : [local.referer_value]
             },
             "IpAddress" : {
-              "aws:SourceIp" : concat("91.168.227.109",local.cloudfront_ips)
+              "aws:SourceIp" : concat(local.cloudfront_ips)
             }
           }
         }
