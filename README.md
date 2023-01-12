@@ -46,9 +46,9 @@ Combining Object Storage with CDN could provides the following benefits :
 
 NB: See [here](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs)
 
-2. Run make .init
+2. Run make init
 ```
-make .init
+make init
 ```
 This script will do the following:
    - Download and parse the Cloudfront IP from the AWS provided url

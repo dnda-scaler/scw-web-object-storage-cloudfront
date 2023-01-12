@@ -1,5 +1,5 @@
 all: .init deploy
-.init:
+init:
 	- echo "Get Cloudfront Server IPs"
 	- wget https://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips -O list-cloudfront-ips.json
 	- $(eval CLOUDFRONT_GLOBAL_IP_LIST=$(shell cat list-cloudfront-ips.json | jq -r '.CLOUDFRONT_GLOBAL_IP_LIST'))

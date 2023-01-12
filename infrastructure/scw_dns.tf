@@ -1,6 +1,6 @@
 
 variable "scw_domain_zone" {
-  type = string
+  type        = string
   description = "DNS Zone in scaleway"
 }
 variable "dns_record_name" {
@@ -28,8 +28,8 @@ resource "scaleway_domain_record" "aws_acm_validation_records" {
     }
   }
   dns_zone = var.scw_domain_zone
-  name            = replace(each.value.name,".${var.scw_domain_zone}.","") //We remove the domain from the name to be complaint with scw terrafomr probvider
-  type            = each.value.type
-  ttl             = 60
+  name     = replace(each.value.name, ".${var.scw_domain_zone}.", "") //We remove the domain from the name to be complaint with scw terrafomr probvider
+  type     = each.value.type
+  ttl      = 60
   data     = each.value.record
 }

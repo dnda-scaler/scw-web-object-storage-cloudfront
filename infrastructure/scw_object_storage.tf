@@ -10,12 +10,12 @@ resource "random_string" "referer_value" {
   override_special = "/@£$"
 }
 variable "web_bucket_name" {
-  type=string
+  type = string
 }
 locals {
-  referer_value        = resource.random_string.referer_value.result
+  referer_value = resource.random_string.referer_value.result
   //web_content_location = "../my-web-app/build"
-  web_content_location = "../files/web-app-static-content"
+  web_content_location = "../my-web-app/build"
 }
 resource "scaleway_object_bucket" "web_app_bucket" {
   name = var.web_bucket_name

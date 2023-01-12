@@ -1,7 +1,7 @@
 locals {
-  cloudfront_ips = concat(var.cloudfront_regional_ips, var.cloudfront_global_ips)
-  object_storage_origin_id         = "scw-static-website"
-  cloudfront_price_class           = "PriceClass_100"
+  cloudfront_ips           = concat(var.cloudfront_regional_ips, var.cloudfront_global_ips)
+  object_storage_origin_id = "scw-static-website"
+  cloudfront_price_class   = "PriceClass_100"
 }
 
 //Cloudfront distribution that is linked with our website configuration
@@ -10,11 +10,11 @@ resource "aws_cloudfront_distribution" "object_storage_distribution" {
     domain_name = scaleway_object_bucket_website_configuration.web_app_bucket.website_endpoint
     origin_id   = local.object_storage_origin_id
     custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "https-only"
-      origin_ssl_protocols   = ["TLSv1", "TLSv1.1"]
-      origin_keepalive_timeout= 50
+      http_port                = 80
+      https_port               = 443
+      origin_protocol_policy   = "https-only"
+      origin_ssl_protocols     = ["TLSv1", "TLSv1.1"]
+      origin_keepalive_timeout = 50
     }
     custom_header {
       name  = "Referer"
